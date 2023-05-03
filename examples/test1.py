@@ -25,13 +25,23 @@ fig_param = {
 # ylim = [0, 1.0]
 xlim = None
 ylim = None
+
+# style = ['science']
+# style = ['science', 'notebook']
+# style = ['science', 'nature']
+style = ['science', 'ieee']
+# style = ['science', 'grid']
+colors = [
+    'red', 'black'
+]
+
 plot1 = SubPlot(
     files,
     [('time', 'val1')] * len(files),
     xtitle=r'time $[s]$',
     ytitle=(r'$\chi$'),
     labels=labels,
-    style=None,
+    style=style,
     legend_title='method',
     title='x displacement',
     xlim=xlim,
@@ -48,7 +58,7 @@ plot2 = SubPlot(
     xtitle=r'time $[s]$',
     ytitle=(r'$\mu$'),
     labels=labels,
-    style=None,
+    style=style,
     legend_title='method',
     title='x displacement',
     xlim=xlim,
