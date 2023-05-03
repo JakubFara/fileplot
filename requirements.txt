@@ -1,6 +1,5 @@
 contourpy==1.0.7
 cycler==0.11.0
--e git+git@github.com:JakubFara/fileplot.git@528c432ee26311ee65e6897478e1dbe841a9a6c0#egg=fileplot
 fonttools==4.39.3
 importlib-resources==5.12.0
 kiwisolver==1.4.4
