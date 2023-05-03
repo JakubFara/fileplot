@@ -19,13 +19,6 @@ DEFAULT_TITLE = {
     'fontsize': 20,
     'y': 1.0
 }
-matplotlib.rcParams.update(
-    {
-        'text.usetex': False,
-        'font.family': 'stixgeneral',
-        'mathtext.fontset': 'stix',
-    }
-)
 
 
 def load_array_from_file(filename: str, split_by=SPLITTING):
@@ -70,8 +63,15 @@ class Plot(object):
                 if posx >= len(subplots[posy]):
                     continue
                 subplot = subplots[posy][posx]
-                ax = self.fig.add_subplot(axs[posy, posx])
-                subplot.plot(ax)
+                with plt.style.context(subplot.style):
+                    matplotlib.rcParams.update({
+                        'text.usetex': False,
+                        'font.family': 'stixgeneral',
+                        'mathtext.fontset': 'stix',
+                    }
+                    )
+                    ax = self.fig.add_subplot(axs[posy, posx])
+                    subplot.plot(ax)
         if legend:
             self.fig.legend(legend, loc=legend_loc, ncol=ncol)
 
@@ -119,6 +119,8 @@ class SubPlot(object):
         self.line_wide = line_wide
         if not style:
             self.style = ['science', 'ieee']
+        else:
+            self.style = style
 
     def plot(self, ax):
         if not self.labels:
@@ -145,11 +147,15 @@ class SubPlot(object):
                             color, linewidth=self.line_wide, label=label)
             else:
                 with plt.style.context(self.style):
-                    ax.plot(arrays[xname], yname(arrays), color, label=label)
-        ax.ticklabel_format(
-            axis='y', style='sci', scilimits=(0, 0), useOffset=True
-        )
+                    ax.plot(
+                        arrays[xname], yname(arrays), color,
+                        linewidth=self.line_wide, label=label
+                    )
+
         with plt.style.context(self.style):
+            ax.ticklabel_format(
+                axis='y', style='sci', scilimits=(0, 0), useOffset=True
+            )
             if self.xlim:
                 ax.set_xlim(self.xlim[0], self.xlim[1])
             if self.ylim:
