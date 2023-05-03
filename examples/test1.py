@@ -12,12 +12,12 @@ labels = [
 ]
 
 fig_param = {
-    'top': 0.9,
-    'bottom': 0.1,
-    'left': 0.1,
-    'right': 0.99,
-    'hspace': 0.25,
-    'fig_size': (8, 8),
+    'top': 0.9,  # start from x % from top of the page
+    'bottom': 0.1,  # start from x % from bottom of the page
+    'left': 0.1,  # start from x % from left of the page
+    'right': 0.99,  # start from x % from top of the page
+    'hspace': 0.25,  # spacing between subplots
+    'fig_size': (8, 8),  # size of the figure in inches
     'dpi': 200
 }
 
