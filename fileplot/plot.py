@@ -1,7 +1,6 @@
 from matplotlib import pyplot as plt
 import matplotlib
 import re
-print(matplotlib.matplotlib_fname())
 # import scienceplots
 import numpy as np
 from matplotlib.ticker import AutoMinorLocator, FixedLocator
@@ -188,22 +187,6 @@ class SubPlot(object):
             ax.set_xlabel(self.xtitle, fontsize=8)
         if self.ytitle:
             ax.set_ylabel(self.ytitle, fontsize=8)
-        if self.title:
-            print(self.title)
-
-            # plt.rcParams.update({
-            #     "text.usetex": True,
-            #     "font.family": "sans-serif",
-            #     "font.sans-serif": "Helvetica",
-            #     'text.latex.preamble': r'\usepackage{amsfonts}'
-            # })
-            # ax.set_title(
-            #     self.title,
-            #     font="sans-serif",
-            #     # fontweight="bold",
-            #     fontsize=8,
-            #     # pad=10,
-            # )
         if self.colors is None:
             self.colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
         if self.line_types is None:
